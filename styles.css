@@ -1,0 +1,8 @@
+.label
+{
+	-fx-text-fill : black ;
+	-fx-font-family : "Comic Sans MS" ;
+	-fx-font-weight : bold ;
+	-fx-font-style : italic ;
+	-fx-font-size : 15px ;
+}
