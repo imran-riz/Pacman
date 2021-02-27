@@ -9,3 +9,5 @@ The user controls pacman using the arrow keys. I created walls using squares and
 My game may not look really aesthatic, but I was more focused on getting the game working as I want it to
 
 Hope you guys like it!
+
+![alt text](https://github.com/amateur-coder-1002/Pacman/blob/main/Pictures/Screenshot_4.png)
