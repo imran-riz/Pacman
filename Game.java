@@ -13,6 +13,11 @@ import javafx.util.* ;
 import java.util.* ;
 import java.io.* ;
 
+
+// javac --module-path "%PATH_TO_FX%" --add-modules javafx.controls Game.java
+// java --module-path "%PATH_TO_FX%" --add-modules javafx.controls Game
+
+
 public class Game extends Application
 {
 	public static void main(String[] args) 
@@ -888,12 +893,22 @@ public class Game extends Application
 	private String getHighScore()
 	{
 		String s = "0" ;
+		String filePath = new File("").getAbsolutePath() ;
+
 		try
 		{
-			File file = new File("C:\\Users\\imran\\P.W\\JAVA\\MyBuilds\\Pacman\\high_score.txt") ;
-			Scanner scan = new Scanner(file) ;
-
-			if(scan.hasNextLine())	s = scan.nextLine() ;
+			File file = new File(filePath.concat("\\high_score.txt")) ;
+			
+			if(file.exists())
+			{
+				Scanner scan = new Scanner(file) ;
+				s = scan.nextLine() ;
+			}
+			else
+			{
+				// create a the high_score.txt file and insert a 0
+				setHighScore("0") ;
+			}
 		}
 		catch(Exception e)
 		{
@@ -903,19 +918,26 @@ public class Game extends Application
 		return s ;
 	}
 
-	private void setHighScore(String newScore)
+
+	private Boolean setHighScore(String newScore)
 	{
+		boolean highScoreUpdated = false ;
 		try
 		{
 			FileWriter writer = new FileWriter("high_score.txt") ;
 			writer.write(newScore) ;
 			writer.close() ;
+
+			highScoreUpdated = true ;
 		}
 		catch(Exception e)
 		{
 			System.out.println("Failed to set the new high score") ;
 		}
+
+		return highScoreUpdated ;
 	}
+
 
 	// method to create pellets, store them in an ArrayList and put them on the pane
 	private void drawPellets()
