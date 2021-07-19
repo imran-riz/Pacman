@@ -1,3 +1,7 @@
+//DEPS org.openjfx:javafx-controls:RELEASE:${os.detected.jfxname}
+//SOURCES Ghost.java
+//FILES styles.css
+
 import javafx.application.*;
 import javafx.stage.*;
 import javafx.scene.*;
